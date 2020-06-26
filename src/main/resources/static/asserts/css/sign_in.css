@@ -1,0 +1,22 @@
+.center_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #FFFFFF;
+    /*border: red 1px solid;*/
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    margin: auto;
+    border: #aba4c5 3px solid;
+}
+
+#fm{
+    margin: 30px auto;
+}
+
+#fm img{
+    cursor: pointer;
+    width: 40% !important;
+    margin: auto;
+}

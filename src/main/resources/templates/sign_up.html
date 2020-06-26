@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/asserts/css/sign_up.css">
+    <link rel="icon" href="/asserts/image/geek_logo.png">
+    <script src="/asserts/js/jquery-3.4.1.js"></script>
+    <script src="/asserts/js/bootstrap.min.js"></script>
+    <script src="/asserts/js/jquery.validate.min.js"></script>
+    <script src="/asserts/js/messages_zh.min.js"></script>
+<!--    这个的位置一定要在依赖文件后面-->
+    <script src="/asserts/js/sign_up.js"></script>
+    <title>欢迎加入极客书</title>
+</head>
+<body>
+<div class="container">
+    <div class="mt-lg-5 box row"  style="opacity: 0.8">
+        <form class="col-md-4 col-10 m-auto" id="sign_up" action="/sign_up/save_user" method="post">
+            <h3 class="text-center mt-2">极客书</h3>
+            <p class="text-center text-danger" th:text="${msg!=null}?${msg}:'欢迎加入极客书'"></p>
+            <div class="form-group">
+                <label for="username"><span class="text-danger">*</span>用户名:</label>
+                <input type="text" class="form-control bg-light" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="email">邮箱:</label>
+                <input type="email" class="form-control bg-light" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="phoneNumbers"><span class="text-danger">*</span>手机:</label>
+                <input type="text" class="form-control bg-light" id="phoneNumbers" name="phoneNumbers">
+            </div>
+            <div class="form-group">
+                <label for="password">密码:</label>
+                <input type="password" class="form-control bg-light" id="password" name="password">
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">确认密码:</label>
+                <input type="password" class="form-control bg-light" id="confirm_password" name="confirm_password">
+            </div>
+            <div class="form-group">
+                <label for="capt">验证码:</label>
+                <div class="d-flex">
+                    <input type="text" class="form-control bg-light w-50" id="capt" name="capt" >
+                    <button type="button" class="w-50 form-control" id="get_capt" onclick="sendCapt()">获取验证码</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-info btn-block" value="注册">
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    .error{
+        color:red;
+    }
+</style>
+</body>
+</html>

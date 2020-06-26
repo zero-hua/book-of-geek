@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <link rel="stylesheet" href="/asserts/css/top_nav.css">-->
+    <link rel="icon" href="/asserts/image/geek_logo.png">
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/asserts/css/top_nav.css">
+    <script src="/asserts/js/jquery-3.4.1.js"></script>
+    <script src="/asserts/js/bootstrap.min.js"></script>
+    <script src="/asserts/js/sign_in.js"></script>
+    <script src="/asserts/js/jquery.validate.min.js"></script>
+    <script src="/asserts/js/messages_zh.min.js"></script>
+    <title>极客书 | 分享创造价值</title>
+</head>
+<body>
+<div th:replace="~{component/top_nav::top_nav}"></div>
+<div class="container-fluid ">
+    <div class="row clearfix">
+        <div class="col-md-2 column p-2">
+            <blockquote>
+                <em>今日好句</em>
+                <p th:text="${sentence.getContent()}">
+                </p> <small ><cite th:text="${sentence.getMean()}">Source Title</cite></small>
+            </blockquote>
+        </div>
+        <div class="col-md-8 column border border-top-0 border-bottom-0">
+           <div th:replace="~{component/article_table::artcle_table}"></div>
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="/1">1</a></li>
+                <li class="page-item"><a class="page-link" href="/2">2</a></li>
+                <li class="page-item"><a class="page-link" href="/3">3</a></li>
+                <li class="page-item"><a class="page-link" href="/4">4</a></li>
+                <li class="page-item"><a class="page-link" href="/5">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </div>
+        <div class="col-md-2 column p-2">
+            <em>今日要闻</em>
+            <small>来源：<a class="text-dark" href="https://36kr.com/">36氪</a></small>
+            <p th:each="news:${newsList}">
+                <a class="text-info" th:text="${news.getTitle()}" th:href="${news.getUrl()}"></a>
+            </p>
+        </div>
+    </div>
+</div>
+<div th:replace="~{component/footer::footer}"></div>
+</body>
+</html>

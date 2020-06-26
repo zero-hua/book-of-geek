@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="/asserts/image/geek_logo.png">
+    <script src="/asserts/js/jquery-3.4.1.js"></script>
+    <script src="/asserts/js/sign_in.js"></script>
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/asserts/css/sign_in.css">
+    <link rel="stylesheet" href="/asserts/css/top_nav.css">
+    <title>极客书 | 分享创造价值</title>
+</head>
+<body>
+<div class="container">
+    <!-- 模态框主体 -->
+    <div class="row">
+        <div class="col-md-4 col-8 bg-light center_box">
+            <h3 class="text-center mt-4">hello,请登录</h3>
+            <p class="text-center text-danger" th:if="${msg!=null}" th:text="${msg}"></p>
+            <form action="/sign_in/check" id="fm" class="w-75" method="post">
+                <div class="form-group">
+                    <label for="usr">账号</label>
+                    <input type="text" id="usr" class="form-control" placeholder="用户名" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">密码</label>
+                    <input type="password" id="pwd" class="form-control" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="capt">验证码</label>
+                    <div class="d-flex">
+                        <input type="text" id="capt" class="form-control mt-1 w-50" name="capt" placeholder="请输入右侧验证码">
+                        <img src="/sign_in/img_code" id="img_code"  title="点击更换验证码"
+                             alt="验证码" onclick="loadXMLDoc()">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="button " class="form-control btn btn-success" onclick="checkCap()" value="登录">
+                </div>
+
+            </form>
+
+            <div class="mb-4 d-flex justify-content-around">
+                <a href="/#">忘记密码</a>
+                <a href="/sign_up">注册</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

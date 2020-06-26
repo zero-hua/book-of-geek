@@ -1,0 +1,16 @@
+body{
+    background-color: #F6F6F6;
+}
+
+.topbar{
+    display: flex;
+    height: 50px;
+    background-color: rgb(163, 37, 37);
+}
+
+.fun{
+    display: flex;
+}
+
+
+

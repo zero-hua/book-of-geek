@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${at.getTitle()}">Title</title>
+    <link rel="icon" href="/asserts/image/geek_logo.png">
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/asserts/css/top_nav.css">
+    <link rel="stylesheet" href="/asserts/css/index.css">
+    <link rel="stylesheet" href="/asserts/editormd/css/editormd.preview.min.css">
+
+    <script src="/asserts/js/jquery-3.4.1.js"></script>
+    <script src="/asserts/js/bootstrap.min.js"></script>
+    <!--editormd导入-->
+    <script src="/asserts/editormd/lib/marked.min.js"></script>
+    <script src="/asserts/editormd/lib/prettify.min.js"></script>
+    <script src="/asserts/editormd/lib/raphael.min.js"></script>
+    <script src="/asserts/editormd/lib/underscore.min.js"></script>
+    <script src="/asserts/editormd/lib/sequence-diagram.min.js"></script>
+    <script src="/asserts/editormd/lib/flowchart.min.js"></script>
+    <script src="/asserts/editormd/lib/jquery.flowchart.min.js"></script>
+    <script src="/asserts/editormd/editormd.min.js"></script>
+
+
+
+</head>
+<body>
+<div th:replace="~{component/top_nav::top_nav}"></div>
+<div class="container border mt-2">
+    <input id="aId" type="hidden" th:value="${aId}">
+    <h3 th:text="${at.getTitle()}"></h3>
+    <div class="border border-top-1">
+        <div id="my-editormd">
+            　　<textarea style="display:none;" placeholder="markdown语言" th:text="${at.getContent()}"></textarea>
+        </div>
+    </div>
+    <div class="container d-flex p-2">
+        <div class="w-25 d-flex justify-content-around">
+            <button id="like" class="btn btn-sm btn-success w-25" onclick="like()" th:value="${at.getLikeCount()}" th:text="'赞('+${at.getLikeCount()}+')'"></button>
+            <button class="btn btn-sm btn-info w-25" >收藏(3)</button>
+        </div>
+        <div class="w-75 d-flex justify-content-around">
+            <span>作者：<a th:text="${at.getAuthor()}" th:href="@{'/personal_center/'+${at.getAuthor()}}"></a></span>
+            <span th:text="'发布时间：'+${#dates.format(at.getStartDate(),'yyyy-MM-dd hh:mm')}"></span>
+            <span th:text="'阅读量：'+${at.getReadCount()}"></span>
+            <span th:text="'评论：'+${commentCount}"></span>
+        </div>
+    </div>
+    <div class="container">
+        <form action="/save_comment" id="commentForm" method="post">
+            <div class="form-group">
+                <label for="comment">我来评论(如果不登录，则是以公用游客身份发表)</label>
+                <textarea class="form-control" rows="4" id="comment" name="content"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-warning"  value="发布">
+            </div>
+            <div class="form-group" th:if="${session.user!=null}">
+                <input type="hidden" th:value="${at.getAId()}" name="aId">
+                <input type="hidden" th:value="${session.user.getUId()}" name="uId">
+                <input type="hidden" th:value="${session.user.getUsername()}" name="commenterName">
+                <input type="hidden" th:value="${#dates.createNow()}" name="commentDate">
+            </div>
+        </form>
+    </div>
+    <div>
+        <h4>评论区</h4>
+        <div th:each="comment:${comments}" th:if="${comments!=null}">
+            <div class="d-flex">
+                <div class="w-25">
+                    <a th:href="@{'/personal_center/'+${comment.getCommenterName()}}" th:text="${comment.getCommenterName()}"></a>
+                </div>
+                <div class="w-25">
+                    <span th:text="${#dates.format(comment.getCommentDate(),'yyyy-MM-dd')}"></span>
+                </div>
+            </div>
+            <div class="bg-white">
+                <p th:text="${comment.getContent()}">评论</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{component/footer::footer}"></div>
+
+<script src="/asserts/js/article.js"></script>
+</body>
+</html>

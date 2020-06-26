@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div th:fragment="source">
+        <link rel="stylesheet" href="/static/asserts/css/bootstrap.min.css">
+        <script src="/static/asserts/js/jquery-3.4.1.js"></script>
+        <script src="/static/asserts/js/bootstrap.min.js"></script>
+    </div>
+    <title>Document</title>
+</head>
+<body>
+<div class="container-fluid ">
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+            <blockquote>
+                <h4>一天一句</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                </p> <small>Someone famous <cite>Source Title</cite></small>
+            </blockquote>
+        </div>
+        <div class="col-md-8 column border border-top-0 border-bottom-0">
+            <table class="table">
+                <thead>最新发表</thead>
+                <tbody>
+                <tr>
+                    <div class="border border-right-0 border-left-0">
+                        <dl>
+                            <dt>
+                                Description lists
+                            </dt>
+                            <dd>
+                                A description list is perfect for defining terms.
+                            </dd>
+                            <dt>
+                                Euismod
+                            </dt>
+                            <dd>
+                                Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+                            </dd>
+                            <dd>
+                                Donec id elit non mi porta gravida at eget metus.
+                            </dd>
+                        </dl>
+                    </div>
+                </tr>
+                </tbody>
+            </table>
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </div>
+        <div class="col-md-2 column">
+            <p>
+                <em>Git</em> 是一个分布式的版本控制系统，最初由 <strong>Linus Torvalds</strong> 编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在 <small>Ruby</small> 社区中。
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="bootstrap//bootstrap.min.css" rel="stylesheet">
+    <!-- Fav and touch icons -->
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="bootstrap//bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="top_nav" th:fragment="top_nav">
+    <a class="navbar-brand" href="#">极客书</a>
+    <span class="navbar-text text-white">有时正是人们无法理解和想象之人才能做出超乎想象的事</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">首页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">极客要闻</a>
+            </li>
+            <li class="nav-item">
+                <div class="d-flex"  id="sign" th:if="${session.user==null}">
+                    <a href="/sign_in" class="btn nav-link">登录</a>
+                    <a href="/sign_up" class="btn nav-link">注册</a>
+                </div>
+                <div class="d-flex" id="per_box" th:if="${session.user!=null}">
+                    <a class="nav-link" th:href="@{'/personal_center/'+${session.user.getUsername()}}" id="center" th:text="${session.user.getUsername()}"></a>
+                    <a class="ml-2 nav-link text-danger" href="/out">退出</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>
